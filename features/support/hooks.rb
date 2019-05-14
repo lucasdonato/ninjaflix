@@ -6,5 +6,5 @@ end
 
 Before("@login") do
   @login_page.go
-  @login_page.with("tony@stark.com", "pwd123")
+  @login_page.with("tony@stark.com", "123456")
 end
