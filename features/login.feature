@@ -7,9 +7,9 @@ Funcionalidade: Login
 
     @login_happy
     Cenario: Acesso
-        Quando eu faço login com "tony@stark.com" e "123456"
+        Quando eu faço login com "tony@stark.com" e "pwd123"
         Então devo ser autenticado
-        E devo ver "Tony Stark" na área logada
+        E devo ver "Tony Esterco" na área logada
 
     @login_hapless
     Esquema do Cenario: Login sem sucesso

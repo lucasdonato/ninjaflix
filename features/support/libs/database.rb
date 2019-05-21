@@ -2,7 +2,7 @@ require "pg"
 
 class Database
   def initialize
-    @connection = PG.connect(host: "192.168.99.100", dbname: "nflix", user: "postgres", password: "qaninja")
+    @connection = PG.connect(CONFIG["database"])
   end
 
   def delete_movie(title)
@@ -10,8 +10,8 @@ class Database
   end
 
   def insert_movie(movie)
-    sql_script = "INSERT INTO public.movies (title, status, year, release_date, created_at, updated_at)" \
-    " VALUES('#{movie["title"]}', '#{movie["status"]}', '#{movie["year"]}', '#{movie["release_date"]}', current_timestamp, current_timestamp);"
+    sql_script = "INSERT INTO public.movies (title, status, year, release_date, cover, created_at, updated_at)" \
+    " VALUES('#{movie["title"]}', '#{movie["status"]}', '#{movie["year"]}', '#{movie["release_date"]}', '#{movie["cover"]}', current_timestamp, current_timestamp);"
 
     @connection.exec(sql_script)
   end
