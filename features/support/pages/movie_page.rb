@@ -22,7 +22,7 @@ class MoviePage
   end
 
   def remove(title)
-    movie_tr(title).find(".btn-trash").click
+    movie_tr(title).find(".nc-simple-remove").click
   end
 
   def has_no_movie(title)
