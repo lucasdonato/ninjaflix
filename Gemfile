@@ -6,3 +6,4 @@ gem "os", "1.0.1"
 gem "pg", "1.1.4"
 gem "rspec", "3.8.0"
 gem "selenium-webdriver", "3.142.0"
+gem 'bundler', '~> 2.0'
