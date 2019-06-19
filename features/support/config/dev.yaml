@@ -1,14 +1,15 @@
 ---
-url: "http://localhost:8080"
+url: "http://localhost:8000"
 database:
-  host: "127.0.0.1"
+#ou 127.0.0.1
+  host: "pgadmin"
   dbname: "nflix"
   user: "postgres"
   password: "qaninja"
 users:
   cat_manager:
     email: "tony@stark.com"
-    pass: "123456"
+    pass: "pwd123"
   admin:
     email: "admin@nflix.com"
     pass: "123456"

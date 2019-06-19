@@ -2,8 +2,8 @@ Before do
   @login_page = LoginPage.new
   @movie_page = MoviePage.new
   @sidebar = SideBarView.new
-  #page.current_window.resize_to(1440, 900)
-  page.driver.browser.manage.window.maximize
+  page.current_window.resize_to(1440, 900)
+  #page.driver.browser.manage.window.maximize
 end
  
 Before("@login") do
