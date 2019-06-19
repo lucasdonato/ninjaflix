@@ -1,5 +1,5 @@
 ---
-url: "http://192.168.99.100:8080"
+url: "http://192.168.99.100:8000"
 database:
   host: "192.168.99.100"
   dbname: "nflix"
@@ -8,7 +8,7 @@ database:
 users:
   cat_manager:
       email: "tony@stark.com"
-      pass: "123456"
+      pass: "pwd123"
   admin:
       email: "admin@nflix.com"
       pass: "123456"
