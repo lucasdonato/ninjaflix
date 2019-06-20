@@ -12,7 +12,7 @@ powershell docker volume rm $(docker volume ls -q)
 powershell docker network rm skynet
 
 echo "Criando Rede no Docker"
-docker docker network rm skynet
+docker network rm skynet
 docker network create --driver bridge skynet
 
 echo "Subindo Bando de Dados"
@@ -39,7 +39,7 @@ timeout 10
 
 echo "Subindo WebApp"
 docker pull papitoio/nflix-web
-REM o docker ip foi alterado para usar o DNS configurado
+REM docker run --name nflix-web --network=skynet -e "VUE_APP_API=http://%DOCKER_IP%:3000" -p 8000:8080 -d papitoio/nflix-web
 docker run --name nflix-web --network=skynet -e "VUE_APP_API=http://nflix-web:3000" -p 8000:8080 -d papitoio/nflix-web
 
 echo "Criando o usuário de Testes"
