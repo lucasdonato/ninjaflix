@@ -18,8 +18,8 @@ pipeline {
         }
         stage("Tests") {
             steps {
-                //sh "bundle exec cucumber" comando para o docker convencional
-                sh "bundle exec cucumber -p ci"
+                sh "bundle exec cucumber" //comando para o docker convencional
+                //sh "bundle exec cucumber -p ci"
             }
             post {
                 always {
