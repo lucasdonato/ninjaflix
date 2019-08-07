@@ -38,10 +38,16 @@ docker run --name nflix-api-gateway --network=skynet -e "API_USERS=http://nflix-
 timeout 10
 
 echo "Subindo WebApp"
-docker pull papitoio/nflix-web
-REM docker run --name nflix-web --network=skynet -e "VUE_APP_API=http://%DOCKER_IP%:3000" -p 8000:8080 -d papitoio/nflix-web
-docker run --name nflix-web --network=skynet -e "VUE_APP_API=http://nflix-web:3000" -p 8000:8080 -d papitoio/nflix-web
+
+REM "imagem abaixo atualizada docker convencional"
+docker pull papitoio/nflix-web2
+docker run --name nflix-web --network=skynet -e "VUE_APP_API=http://nflix-web:3000" -p 8000:8000 -d papitoio/nflix-web2
+
+REM docker toobox..
+REM docker run --name nflix-web --network=skynet -e "VUE_APP_API=http://%DOCKER_IP%:3000" -p 8000:8000 -d papitoio/nflix-web2
 
 echo "Criando o usuário de Testes"
 powershell gem install httparty
 ruby api-user.rb %DOCKER_IP%
+
+REM lembrar de configurar os DNS
