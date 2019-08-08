@@ -16,7 +16,7 @@ when "chrome"
   @driver = :selenium_chrome
 when "headless"
   Capybara.register_driver :selenium_chrome_headless do |app|
-    chrome_options =  Selenium::WebDriver::Chrome::Options.new.tap do |options|
+    chrome_options = Selenium::WebDriver::Chrome::Options.new.tap do |options|
       options.add_argument "--headless"
       options.add_argument "--disable-gpu"
       options.add_argument "--no-sandbox"
@@ -32,5 +32,5 @@ end
 Capybara.configure do |config|
   config.default_driver = @driver
   config.app_host = CONFIG["url"]
-  config.default_max_wait_time = 120
+  config.default_max_wait_time = 30
 end
