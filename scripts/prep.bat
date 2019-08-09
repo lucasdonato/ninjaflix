@@ -1,15 +1,16 @@
 REM Arquivo de configuração para o Windows
 
+REM Docker convencional
+set DOCKER_IP=localhost
+
 REM Docker ToolBox
 REM set DOCKER_IP=192.168.99.100
-
-REM Docker normal
-set DOCKER_IP=localhost
 
 echo "ZERANDO a Vida do Docker"
 powershell docker rm -f $(docker ps -a -q)
 powershell docker volume rm $(docker volume ls -q)
 powershell docker network rm skynet
+powershell docker rmi $(docker images -q)
 
 echo "Criando Rede no Docker"
 docker network rm skynet
@@ -51,3 +52,9 @@ powershell gem install httparty
 ruby api-user.rb %DOCKER_IP%
 
 REM lembrar de configurar os DNS
+REM 127.0.0.1   nflix-web
+REM 127.0.0.1   nflix-api-users
+REM 127.0.0.1   nflix-api-movies
+REM 127.0.0.1   nflix-api-gateway
+REM 127.0.0.1   pgdb
+REM 127.0.0.1   pgadmin
