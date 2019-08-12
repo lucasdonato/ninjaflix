@@ -15,6 +15,7 @@ pipeline {
                 sh "./build/alpine.sh"
                 sh "gem install bundler:2.0.1"
                 sh "bundle install"
+                sh "bundle update"
             }
         }
         stage("Tests") {
@@ -28,6 +29,7 @@ pipeline {
             }
             post {
                 always {
+                    junit 'log/*.xml' 
                     //configurações do plugin de relatório
                     cucumber failedFeaturesNumber: -1, failedScenariosNumber: -1, failedStepsNumber: -1, fileIncludePattern: '**/*.json', jsonReportDirectory: 'log', pendingStepsNumber: -1, skippedStepsNumber: -1, sortingMethod: 'ALPHABETICAL', undefinedStepsNumber: -1
                     //configurações do slack
