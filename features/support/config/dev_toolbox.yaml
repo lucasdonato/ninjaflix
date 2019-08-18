@@ -1,14 +1,18 @@
 ---
-url: "http://192.168.99.100:8000"
+url: "http://nflix-web:8000"
 database:
-  host: "192.168.99.100"
+  host: "pgdb"
   dbname: "nflix"
   user: "postgres"
   password: "qaninja"
+api:
+  movies: "http://nflix-api-movies:3002"
 users:
   cat_manager:
-      email: "tony@stark.com"
-      pass: "pwd123"
+    email: "tony@stark.com"
+    pass: "pwd123"
   admin:
-      email: "admin@nflix.com"
-      pass: "123456"
+    email: "admin@nflix.com"
+    pass: "123456"
+
+    
