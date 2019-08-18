@@ -15,6 +15,7 @@ pipeline {
                 sh "./build/alpine.sh"
                 sh "gem install bundler:2.0.1"
                 sh "bundle install"
+                sh "bundle update"
             }
         }
         stage("Tests") {
@@ -28,12 +29,16 @@ pipeline {
             }
             post {
                 always {
+                    junit 'log/*.xml' 
                     //configurações do plugin de relatório
                     cucumber failedFeaturesNumber: -1, failedScenariosNumber: -1, failedStepsNumber: -1, fileIncludePattern: '**/*.json', jsonReportDirectory: 'log', pendingStepsNumber: -1, skippedStepsNumber: -1, sortingMethod: 'ALPHABETICAL', undefinedStepsNumber: -1
                     //configurações do slack
                     slackSend channel: "#automacao-de-testes",
                         color: COLOR_MAP[currentBuild.currentResult],
                         message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n Mais informacoes acesse: ${env.BUILD_URL}"
+                        
+                        //envio de email apos o build
+                        emailext attachLog: true, attachmentsPattern: 'log/report.html', body: 'Relatório final jenkins', replyTo: 'lucaspolimig96@gmail.com', subject: 'Execução Testes Jenkins', to: 'lucaspolimig96@gmail.com'    
                 }
             }
         }

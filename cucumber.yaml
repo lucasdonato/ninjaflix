@@ -1,5 +1,5 @@
 ---
-default: -p dev -p headless -p json -p pretty #docker convencional
+default: -p dev -p headless -p json -p pretty -p html -p xml #docker convencional
 ci: -p dev_toolbox -p headless -p json -p pretty #docker toolbox
 dev: ENV_TYPE=dev
 dev_toolbox: ENV_TYPE=dev_toolbox
@@ -11,3 +11,4 @@ html: --format html --out=log/report.html
 json: --format json --out=log/report.json
 pretty: --format pretty
 progress: --format progress
+xml:  --format junit --out log
